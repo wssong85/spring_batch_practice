@@ -10,10 +10,11 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.boot.autoconfigure.batch.BasicBatchConfigurer;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,8 @@ public class JobLauncherController {
 
     // sync
 //    @PostMapping("/batch")
-    public String launch(@RequestBody Member member)
+//    public String launch(@RequestBody Member member)
+    public String launch(Member member)
         throws Exception {
 
         JobParameters jobParameters = new JobParametersBuilder()
@@ -55,7 +57,8 @@ public class JobLauncherController {
 
 
 //    @PostMapping("/async/batch")
-    public String asyncLaunch(@RequestBody Member member)
+//    public String asyncLaunch(@RequestBody Member member)
+    public String asyncLaunch(Member member)
         throws Exception {
 
         JobParameters jobParameters = new JobParametersBuilder()

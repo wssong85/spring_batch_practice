@@ -8,10 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableBatchProcessing
 public class PracticeApplication {
 
-
     // 외부 parameter args 주입 => name=user1 timeMillis(long)=1010L date(date)=2023/01/17 age(double)=18.5
+    // --job.name=JobLauncherConfig name=user3
     public static void main(String[] args) {
-        SpringApplication.run(PracticeApplication.class, jobParameter());
+        SpringApplication.run(PracticeApplication.class, args);
+//        SpringApplication.run(PracticeApplication.class, jobParameter());
 //        SpringApplication.run(PracticeApplication.class, hardJobParameter());
     }
 

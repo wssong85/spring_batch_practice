@@ -30,7 +30,7 @@ public class StepExecutionJobConfig {
     private Step step1() {
         return stepBuilderFactory.get("step1")
             .tasklet((contribution, chunkContext) -> {
-                System.out.println("step1 was execute.");
+                System.out.println("stepExecutionJob step1 was execute.");
                 return RepeatStatus.FINISHED;
             })
             .build();
@@ -51,7 +51,7 @@ public class StepExecutionJobConfig {
     private Step step3() {
         return stepBuilderFactory.get("step3")
             .tasklet((contribution, chunkContext) -> {
-                System.out.println("step3 was execute.");
+                System.out.println("stepExecutionJob step3 was execute.");
                 return RepeatStatus.FINISHED;
             })
             .build();

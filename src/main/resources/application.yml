@@ -35,5 +35,10 @@ spring:
     jdbc:
       initialize-schema: always
     job:
-      names: JobLauncherConfig
-      enabled: false
+      names: JobAndStepScopeConfig
+#      names: ${job.name:NONE}
+      # enable false
+      enabled: true
+      # table prefix
+#      tablePrefix: SYSTEM_
+      tablePrefix: BATCH_
