@@ -5,7 +5,14 @@ spring:
 #    job:
 #      names: ${job.name:NONE}
 #      // --job.name=thirdJob
-
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 ---
 spring:
   config:
@@ -29,13 +36,13 @@ spring:
     hikari:
       jdbc-url: jdbc:mysql://127.0.0.1:3306/BATCH_APP?useUnicode=true&characterEncoding=utf8
       username: root
-      password: 1234
+      password: abcd5511
       driver-class-name: com.mysql.cj.jdbc.Driver
   batch:
     jdbc:
       initialize-schema: always
     job:
-      names: ChunkTest2Config
+      names: DbCursorConfig
 #      names: ${job.name:NONE}
       # enable false
       enabled: true
