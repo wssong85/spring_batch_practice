@@ -15,18 +15,16 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class StepJobConfig {
+public class StepExecutionJobConfig {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
-    private final CustomTasklet customTasklet;
-
     @Bean
-    public Job simpleTestJob() {
+    public Job stepExecutionJob() {
 
         String className = this.getClass().getSuperclass().getSimpleName();
-        return jobBuilderFactory.get(className).start(step1()).next(step2()).build();
+        return jobBuilderFactory.get(className).start(step1()).next(step2()).next(step3()).build();
     }
 
     private Step step1() {
@@ -39,11 +37,23 @@ public class StepJobConfig {
     }
 
     private Step step2() {
-//        return stepBuilderFactory.get("step2")
-//            .tasklet((contribution, chunkContext) -> customTasklet.execute(contribution, chunkContext))
-//            .build();
         return stepBuilderFactory.get("step2")
-            .tasklet(new CustomTasklet())
+            .tasklet((contribution, chunkContext) -> {
+//                System.out.println("step2 was execute.");
+//                if (true) {
+//                    throw new RuntimeException("step failed!!");
+//                }
+                return RepeatStatus.FINISHED;
+            })
+            .build();
+    }
+
+    private Step step3() {
+        return stepBuilderFactory.get("step3")
+            .tasklet((contribution, chunkContext) -> {
+                System.out.println("step3 was execute.");
+                return RepeatStatus.FINISHED;
+            })
             .build();
     }
 }

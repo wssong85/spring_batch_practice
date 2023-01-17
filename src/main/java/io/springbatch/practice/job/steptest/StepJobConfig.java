@@ -1,4 +1,4 @@
-package io.springbatch.practice.simplejob;
+package io.springbatch.practice.job.steptest;
 
 import io.springbatch.practice.tasklet.CustomTasklet;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class SimpleTestJobConfig {
+public class StepJobConfig {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;

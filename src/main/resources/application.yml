@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: mysql
 #  batch:
 #    job:
 #      names: ${job.name:NONE}
@@ -35,5 +35,5 @@ spring:
     jdbc:
       initialize-schema: always
     job:
-      names: jobInstance
+      names: JobLauncherConfig
       enabled: false
