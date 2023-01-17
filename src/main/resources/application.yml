@@ -35,7 +35,7 @@ spring:
     jdbc:
       initialize-schema: always
     job:
-      names: JobAndStepScopeConfig
+      names: ChunkTest2Config
 #      names: ${job.name:NONE}
       # enable false
       enabled: true

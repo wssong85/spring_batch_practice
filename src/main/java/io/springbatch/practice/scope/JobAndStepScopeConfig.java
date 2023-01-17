@@ -23,7 +23,7 @@ public class JobAndStepScopeConfig {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
-    @Bean
+//    @Bean
     public Job jobAndStepScope() {
 
         String className = this.getClass().getSuperclass().getSimpleName();
@@ -34,8 +34,8 @@ public class JobAndStepScopeConfig {
             .build();
     }
 
-    @JobScope
-    @Bean
+//    @JobScope
+//    @Bean
     public Step step1(@Value("#{jobParameters['message']}") String message) {
 
         log.info("step1 message={}", message);
@@ -45,16 +45,19 @@ public class JobAndStepScopeConfig {
             .build();
     }
 
-    @Bean
+
+
+//    @Bean
     public Step step2() {
         return stepBuilderFactory.get("step2")
             .tasklet(tasklet2(null))
             .listener(new CustomStepListener())
+//            .listener(new CustomSkipListener())
             .build();
     }
 
-    @Bean
-    @StepScope
+//    @Bean
+//    @StepScope
     public Tasklet tasklet1(@Value("#{jobExecutionContext['name']}") String name) {
 
         log.info("tesklet1 name={}", name);
@@ -65,8 +68,8 @@ public class JobAndStepScopeConfig {
         };
     }
 
-    @Bean
-    @StepScope
+//    @Bean
+//    @StepScope
     public Tasklet tasklet2(@Value("#{stepExecutionContext['name2']}") String name2) {
 
         log.info("tesklet2 name2={}", name2);
